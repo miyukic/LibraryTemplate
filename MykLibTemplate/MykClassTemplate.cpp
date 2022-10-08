@@ -1,4 +1,4 @@
-﻿#include <string>
+﻿#include "pch.h"
 #include "MykClassTemplate.hpp"
 
 #ifdef _WIN32

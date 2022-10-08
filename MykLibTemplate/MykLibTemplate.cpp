@@ -1,7 +1,7 @@
 ﻿// MykLibTemplate.cpp: ターゲットのソース ファイル。
 //
 
-#include <iostream>
+#include "pch.h"
 #include "MykLibTemplate.h"
 
 int libmyfunc() {

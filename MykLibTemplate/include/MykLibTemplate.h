@@ -1,4 +1,5 @@
 ﻿// MykLibTemplate.h: ターゲットのヘッダー ファイル。
+#pragma once
 
 #ifdef MYKLIB_EXPORTS
 #   define MYKLIB_API __declspec(dllexport)
@@ -10,7 +11,6 @@
 #   endif
 #endif
 
-#pragma once
 #include <iostream>
 
 // TODO: プログラムに必要な追加ヘッダーをここで参照します。

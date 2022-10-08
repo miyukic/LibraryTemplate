@@ -1,5 +1,6 @@
 ﻿set(PROJ_NAME "MykLibTemplate")
 set(SOURCE_LIST
+	"dllmain.cpp" "pch.cpp"
 	"MykLibTemplate.cpp" "include/MykLibTemplate.h"
 	"MykClassTemplate.cpp"
 )
@@ -16,10 +17,15 @@ else()
 		${SOURCE_LIST}
 	)
 	if(MSVC)
-		#target_compile_options(${PROJ_NAME} PUBLIC "/utf-8")
 		#プリプロセスマクロ定義
 		add_compile_definitions(MYKLIB_EXPORTS)
 	endif()
+endif()
+
+if (MSVC)
+	#target_compile_options(${PROJ_NAME} PUBLIC "/utf-8")
+	#target_compile_options(${PROJ_NAME} PUBLIC "/source-charset:utf-8")
+	target_compile_options(${PROJ_NAME} PUBLIC "/execution-charset:utf-8")
 endif()
 
 target_include_directories(${PROJ_NAME} 
