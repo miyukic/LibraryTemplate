@@ -19,9 +19,9 @@ target_include_directories(${PROJ_NAME}
 )
 
 #自作ライブラリをリンクする(インポートライブラリなども自動でリンク処理をする)
-#第二引数目以降にプロジェクト名を指定する
+#第二引数目以降にプロジェクト名(gcc に -lfoo と指定していた場合は、 foo とだけ書く)を指定する
 #https://gist.github.com/miyukic/246f3977372c440ccff37747a7b6a73a
-target_link_libraries(${PROJ_NAME} MykLibTemplate)
+target_link_libraries(${PROJ_NAME} PRIVATE MykLibTemplate)
 
 #dllを実行ファイルと同じフォルダへのコピー
 #https://yuki-koyama.hatenablog.com/entry/2018/09/09/135057

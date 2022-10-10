@@ -7,7 +7,7 @@
 
 void MykClassTemplate::printData() {
 #ifdef _WIN32
-    std::cout.imbue(std::locale("." + std::to_string(GetConsoleCP()), std::locale::ctype));
+    //std::cout.imbue(std::locale("." + std::to_string(GetConsoleCP()), std::locale::ctype));
 #endif
     std::cout << "printData\nHogeHoge" << std::endl;
     for (auto& str : this->data) {
