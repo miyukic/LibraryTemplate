@@ -8,6 +8,11 @@ if(MSVC)
 else()
 endif()
 
+#dllを見つけられるようになるために必要な二行
+if (MSVC)
+set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+endif()
 # サブプロジェクトを含めます。
 add_subdirectory("Main")
 add_subdirectory ("MykLibTemplate")
