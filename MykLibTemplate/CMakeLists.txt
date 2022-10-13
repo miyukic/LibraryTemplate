@@ -5,8 +5,13 @@ set(SOURCE_LIST
 	"MykClassTemplate.cpp"
 )
 
+set(PRE_COMP_HEADERS
+	"pch.h"
+)
+
 #動的/静的ライブラリを切り替えるオプションを定義
 option(BUILD_STATIC_LIBS "build static lib" OFF)
+
 
 if(BUILD_STATIC_LIBS)
 	add_library(${LIBTEMP_PROJ_NAME} STATIC 
@@ -22,11 +27,20 @@ else()
 	endif()
 endif()
 
-if (MSVC)
-	#target_compile_options(${LIBTEMP_PROJ_NAME} PUBLIC "/utf-8")
-	#target_compile_options(${LIBTEMP_PROJ_NAME} PUBLIC "/source-charset:utf-8")
-	target_compile_options(${LIBTEMP_PROJ_NAME} PUBLIC "/execution-charset:utf-8")
-endif()
+target_precompile_headers(${LIBTEMP_PROJ_NAME} PUBLIC ${PRE_COMP_HEADERS})
+
+#target_compile_options(${LIBTEMP_PROJ_NAME} PUBLIC
+#"/utf-8")
+target_compile_options(${LIBTEMP_PROJ_NAME} PUBLIC
+	$<$<CXX_COMPILER_ID:MSVC>:/utf-8>
+	#$<$<CXX_COMPILER_ID:MSVC>:/source-charset:utf-8>
+	#$<$<CXX_COMPILER_ID:MSVC>:/execution-charset:utf-8>
+)
+
+target_compile_options(${LIBTEMP_PROJ_NAME} PUBLIC
+	$<$<CXX_COMPILER_ID:MSVC>: /W4>				#MSVC
+	$<$<PLATFORM_ID:Linux>: -Wall -Wextra>		#Linux
+)
 
 target_include_directories(${LIBTEMP_PROJ_NAME} 
 	PUBLIC
