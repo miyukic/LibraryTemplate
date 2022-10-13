@@ -9,12 +9,14 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 ) {
     switch (ul_reason_for_call) {
     case DLL_PROCESS_ATTACH:
+#ifdef _DEBUG
         std::cout << "__cplusplus = " << __cplusplus << std::endl;
 #ifdef _WIN64
-        std::cout << "Windows x64向けコンパイルです。" << std::endl;
+        std::cout << "Compiled for Windows x64." << std::endl;
 #elif _WIN32
-        std::cout << "Windows x86向けコンパイルです。";
+        std::cout << "Compiled for Windows x86";
 #endif
+#endif //_DEBUG
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:
