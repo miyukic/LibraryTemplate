@@ -3,16 +3,20 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("LibraryTemplate")
-if(MSVC)
-else()
-endif()
+set(MAIN_PROJ_NAME "Main")
+set(LIBTEMP_PROJ_NAME "MykLibTemplate")
+
+project("LibraryTemplate")
+if (MSVC)
+else ()
+endif ()
 
 #dllを見つけられるようになるために必要な二行
-if (MSVC)
-set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+#https://stackoverflow.com/questions/44909846/cmake-exe-cant-find-dll
+if(MSVC)
+	set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
+	set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}")
 endif()
 # サブプロジェクトを含めます。
 add_subdirectory("Main")
-add_subdirectory ("MykLibTemplate")
+add_subdirectory("MykLibTemplate")

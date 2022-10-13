@@ -4,24 +4,24 @@
 cmake_minimum_required (VERSION 3.8)
 
 # プロジェクト名の設定
-set(PROJ_NAME "Main")
+set(PROJ_NAME ${MAIN_PROJ_NAME})
 # ソースファイル
 set(PROJ_SOURCE "Main.cpp" "Main.h")
 
 
 # ソースをこのプロジェクトの実行可能ファイルに追加します。
-add_executable (${PROJ_NAME} ${PROJ_SOURCE})
+add_executable (${MAIN_PROJ_NAME} ${PROJ_SOURCE})
 
-target_include_directories(${PROJ_NAME} 
+target_include_directories(${MAIN_PROJ_NAME} 
 	PUBLIC
 	#ライブラリ側のヘッダーファイルフォルダをincludeディレクトリに追加
-	${PROJECT_SOURCE_DIR}/MykLibTemplate/include
+	${PROJECT_SOURCE_DIR}/${LIBTEMP_PROJ_NAME}/include
 )
 
 #自作ライブラリをリンクする(インポートライブラリなども自動でリンク処理をする)
 #第二引数目以降にプロジェクト名(gcc に -lfoo と指定していた場合は、 foo とだけ書く)を指定する
 #https://gist.github.com/miyukic/246f3977372c440ccff37747a7b6a73a
-target_link_libraries(${PROJ_NAME} PRIVATE MykLibTemplate)
+target_link_libraries(${MAIN_PROJ_NAME} PRIVATE MykLibTemplate)
 
 #dllを実行ファイルと同じフォルダへのコピー -> ルートのCMakeListsに追加した二行で必要なくなった
 #https://yuki-koyama.hatenablog.com/entry/2018/09/09/135057
@@ -64,6 +64,6 @@ endif()
 
 
 if(CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET ${PROJ_NAME} PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${MAIN_PROJ_NAME} PROPERTY CXX_STANDARD 20)
 endif()
 # TODO: テストを追加し、必要な場合は、ターゲットをインストールします。
