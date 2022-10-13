@@ -42,7 +42,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: ubutnu-${matrix.IS_STATICLIB}
+        name: win-${matrix.IS_STATICLIB}
         path: ./build
 
   build-win:
