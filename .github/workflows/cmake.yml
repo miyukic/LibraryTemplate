@@ -42,7 +42,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: win-${matrix.IS_STATICLIB}
+        name: ubuntu-${{matrix.IS_STATICLIB}}
         path: ./build
 
   build-win:
@@ -73,7 +73,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: win-${matrix.IS_STATICLIB}-${matrix.arch}
+        name: win-${{matrix.IS_STATICLIB}}-${{matrix.arch}}
         path: ./build
 
 
